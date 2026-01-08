@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders Help | Daraz</title>
+    <link rel="stylesheet" href="help.css">
+</head>
+<body>
+
+<header class="help-header">
+    <h1>Orders Help</h1>
+    <p>Manage your orders easily</p>
+</header>
+
+<section class="help-content">
+    <h3>Track Your Order</h3>
+    <input type="text" id="orderId" placeholder="Enter Order ID">
+    <button onclick="trackOrder()">Track Order</button>
+
+    <h3>Order Actions</h3>
+    <button onclick="cancelOrder()">Cancel Order</button>
+    <button onclick="returnOrder()">Return / Replace</button>
+
+    <p id="orderResult"></p>
+</section>
+
+<script src="help.js"></script>
+
+</body>
+</html>

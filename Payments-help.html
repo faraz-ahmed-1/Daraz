@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payments Help | Daraz</title>
+    <link rel="stylesheet" href="help.css">
+</head>
+<body>
+
+<header class="help-header">
+    <h1>Payments Help</h1>
+    <p>Payment & refund related queries</p>
+</header>
+
+<section class="help-content">
+    <h3>Check Refund Status</h3>
+    <input type="text" id="refundId" placeholder="Enter Order ID">
+    <button onclick="checkRefund()">Check Refund</button>
+
+    <h3>Payment Issue</h3>
+    <button onclick="paymentFailed()">Payment Failed</button>
+    <button onclick="codIssue()">COD Issue</button>
+
+    <p id="paymentResult"></p>
+</section>
+
+<script src="help.js"></script>
+
+</body>
+</html>

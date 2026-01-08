@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track My Order | Daraz</title>
+    <!-- <link rel="stylesheet" href="track-order.css"> -->
+     <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+/* Header */
+.track-header {
+    background: #f85606;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Box */
+.track-box {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.track-box input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.track-box button {
+    width: 100%;
+    padding: 12px;
+    background: #f85606;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.track-box button:hover {
+    background: #e04f04;
+}
+
+/* Result */
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    display: none;
+    border-radius: 4px;
+    background: #fff5ef;
+    text-align: left;
+}
+
+.status {
+    font-weight: bold;
+    color: #f85606;
+}
+     </style>
+</head>
+<body>
+
+<!-- 🔶 Header -->
+<header class="track-header">
+    <h1>Track My Order</h1>
+    <p>Enter your Order ID to see order status</p>
+</header>
+
+<!-- 🔶 Track Box -->
+<section class="track-box">
+    <input type="text" id="orderId" placeholder="Enter Order ID (e.g. DZR12345)">
+    <button onclick="trackOrder()">Track Order</button>
+
+    <!-- Result -->
+    <div id="result" class="result-box"></div>
+</section>
+
+<script>
+    function trackOrder() {
+    const orderId = document.getElementById("orderId").value;
+    const result = document.getElementById("result");
+
+    if (!orderId) {
+        alert("Please enter Order ID");
+        return;
+    }
+
+    // Dummy order status simulation
+    const statuses = [
+        "Order Confirmed",
+        "Packed",
+        "Shipped",
+        "Out for Delivery",
+        "Delivered"
+    ];
+
+    const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+
+    result.style.display = "block";
+    result.innerHTML = `
+        <p><strong>Order ID:</strong> ${orderId}</p>
+        <p><strong>Status:</strong> <span class="status">${randomStatus}</span></p>
+        <p><strong>Estimated Delivery:</strong> 2 - 5 Working Days</p>
+    `;
+}
+</script>
+</body>
+</html>
