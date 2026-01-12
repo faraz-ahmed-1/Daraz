@@ -13,6 +13,80 @@
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* Add Product Button */
+.add-product-btn{
+    background:#fff;
+    color:#f85606;
+    border:none;
+    padding:6px 15px;
+    border-radius:4px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* Modal */
+.modal{
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.6);
+    z-index:1000;
+}
+.modal-content{
+    background:#fff;
+    width:400px;
+    margin:6% auto;
+    padding:20px;
+    border-radius:8px;
+}
+.modal-content h3{
+    margin-top:0;
+}
+.modal-content input,
+.modal-content textarea{
+    width:100%;
+    padding:8px;
+    margin-bottom:10px;
+}
+.modal-content button{
+    width:100%;
+    background:#f85606;
+    color:#fff;
+    border:none;
+    padding:10px;
+    cursor:pointer;
+}
+.close{
+    float:right;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* Product Cards */
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    padding:20px;
+}
+.product-card{
+    background:#fff;
+    width:220px;
+    border-radius:6px;
+    padding:10px;
+}
+.product-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+}
+.price{
+    color:#f85606;
+    font-weight:bold;
+}
+    </style>
 </head>
 
 <body>
@@ -25,6 +99,7 @@
                     <a class="px-2" href="Customer-care.html">CUSTOMER CARE</a>
                     <a class="px-2" href="Track-order.html">TRACK MY ORDER</a>
                     <a class="px-2" href="index.html">SIGNUP / LOGIN</a>
+                    <button class="add-product-btn" id="addProductBtn">Add Product</button>
                 </div>
             </div>
         </div>
@@ -194,6 +269,7 @@
                 <a class="px-2" href="Customer-care.html">CUSTOMER CARE</a>
                 <a class="px-2" href="Track-order.html">TRACK MY ORDER</a>
                 <a class="px-2" href="#">SIGNUP / LOGIN</a>
+                <button class="add-product-btn" id="addProductBtn">Add Product</button>
             </div>
         </div>
 
@@ -3061,7 +3137,21 @@
         </div>
     </section>
     <!-- just for you products end -->
+<!-- Modal -->
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Add New Product</h3>
 
+        <input type="text" id="productName" placeholder="Product Name">
+        <input type="number" id="price" placeholder="Price">
+        <input type="number" id="quantity" placeholder="Quantity">
+        <textarea id="description" placeholder="Description"></textarea>
+        <input type="file" id="image">
+
+        <button onclick="saveProduct()">Save Product</button>
+    </div>
+</div>
     <!-- fotter start -->
     <footer>
         <div class="container">

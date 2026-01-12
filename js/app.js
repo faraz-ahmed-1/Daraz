@@ -3,7 +3,57 @@ const submenus = document.querySelectorAll(".submenu");
 const popup_manuBerger = document.querySelector(".popup_manuBerger");
 const mobile__Manu = document.querySelector(".mobile__Manu");
 const searchBox = document.querySelector(".mobile__Manu .searchBox");
+const modal = document.getElementById("productModal");
+const btn = document.getElementById("addProductBtn");
+const close = document.querySelector(".close");
+const productList = document.getElementById("productList");
 
+btn.onclick = () => modal.style.display = "block";
+close.onclick = () => modal.style.display = "none";
+
+window.onclick = (e) => {
+    if(e.target === modal){
+        modal.style.display = "none";
+    }
+}
+
+function saveProduct(){
+    const name = document.getElementById("productName").value;
+    const price = document.getElementById("price").value;
+    const qty = document.getElementById("quantity").value;
+    const desc = document.getElementById("description").value;
+    const imgInput = document.getElementById("image");
+
+    if(!name || !price || !qty){
+        alert("Please fill all required fields");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(){
+        const card = `
+        <div class="product-card">
+            <img src="${reader.result}">
+            <h4>${name}</h4>
+            <p class="price">Rs. ${price}</p>
+            <p>Qty: ${qty}</p>
+            <p>${desc}</p>
+        </div>`;
+        productList.innerHTML += card;
+    }
+
+    if(imgInput.files[0]){
+        reader.readAsDataURL(imgInput.files[0]);
+    }
+
+    modal.style.display = "none";
+
+    document.getElementById("productName").value="";
+    document.getElementById("price").value="";
+    document.getElementById("quantity").value="";
+    document.getElementById("description").value="";
+    imgInput.value="";
+}
 // active manu for mobile
 popup_manuBerger.addEventListener("click", function () {
     mobile__Manu.classList.toggle("active")
